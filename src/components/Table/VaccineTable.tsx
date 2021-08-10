@@ -86,7 +86,7 @@ const VaccineDistributionTable: React.FC<IProps> = ({ data }: IProps) => {
             <TableRow>
               <StyledTableCell align="center">Tỉnh/TP</StyledTableCell>
               <StyledTableCell align="center">
-                Liệu lượng đã tiêm chủng
+                Số người đã tiêm chủng
               </StyledTableCell>
               <StyledTableCell align="center">Đã tiêm 1 lần</StyledTableCell>
               <StyledTableCell align="center">Đã tiêm 2 lần</StyledTableCell>

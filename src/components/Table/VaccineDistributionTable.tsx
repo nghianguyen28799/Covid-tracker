@@ -104,7 +104,7 @@ const VaccineTable: React.FC<IProps> = ({ data }: IProps) => {
                   {Number(row[1]?.Realistic).toLocaleString()}
                 </StyledTableCell>
                 <StyledTableCell align="center">
-                  {Number(row[1]?.DistributedRate).toLocaleString()}
+                  {Number(row[1]?.DistributedRate).toLocaleString()}%
                 </StyledTableCell>{" "}
               </StyledTableRow>
             ))}

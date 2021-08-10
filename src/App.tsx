@@ -19,11 +19,6 @@ const theme = createMuiTheme({
 });
 
 const App: React.FC = () => {
-  // React.useEffect(() => {
-  //   let title = "abc";
-
-  //   document.title = "Covid-19 Tracker";
-  // }, []);
   return (
     <ThemeProvider theme={theme}>
       <Container>

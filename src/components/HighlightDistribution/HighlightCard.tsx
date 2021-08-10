@@ -35,12 +35,7 @@ const useStyles = makeStyles({
   },
 });
 
-const HighlightCard: React.FC<IProps> = ({
-  title,
-  count,
-  type,
-  countToday,
-}: IProps) => {
+const HighlightCard: React.FC<IProps> = ({ title, count, type }: IProps) => {
   const styles = useStyles({ type: type });
 
   return (
@@ -51,7 +46,8 @@ const HighlightCard: React.FC<IProps> = ({
         </Typography>
         <Typography component="p" variant="body2" className={styles.count}>
           {count?.toLocaleString()}
-        </Typography>        
+          {type === "totalDistributedRate" ? "%" : ""}
+        </Typography>
       </CardContent>
     </Card>
   );

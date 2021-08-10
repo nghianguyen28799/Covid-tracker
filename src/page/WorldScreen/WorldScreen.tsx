@@ -5,14 +5,15 @@ import Summary from "../../components/Summary";
 import Introduce from "../../components/Introduce";
 import Symptom from "../../components/Symptom";
 import Highlight from "../../components/Highlight";
-import Prevent from "../../components/Symptom";
+import Prevent from "../../components/Prevent";
 import moment from "moment";
 import NavigatorComponent from "../../components/Navigator";
 import lottie from "lottie-web";
 import Footer from "../../components/Footer";
 import { getCountries, getReportByCountry, getReportGlobal } from "../../api";
 import { ICountry, IGetReport, IGlobalReport } from "../../interface";
-// import { Container, createMuiTheme, ThemeProvider } from "@material-ui/core";
+import CircularProgress from "@material-ui/core/CircularProgress";
+import ScrollToTop from "../../components/Scroll";
 
 const WorldScreen: React.FC = () => {
   const lottieRef = React.useRef<any>(null);
@@ -23,6 +24,7 @@ const WorldScreen: React.FC = () => {
   const [countryIdToChart, setCountryIdToChart] = React.useState<string>("");
   const [report, setReport] = React.useState<IGetReport[]>([]);
   const [highlightData, setHighlightData] = React.useState<IGlobalReport>();
+  const [loading, setLoading] = React.useState<boolean>(true);
 
   React.useEffect(() => {
     lottie.loadAnimation({
@@ -68,6 +70,13 @@ const WorldScreen: React.FC = () => {
         });
     }
   }, [countries, global, selectedCountryId]);
+
+  React.useEffect(() => {
+    setTimeout(function () {
+      setLoading(false);
+    }, 1500);
+  });
+
   return (
     <>
       <Grid container spacing={1}>
@@ -103,38 +112,46 @@ const WorldScreen: React.FC = () => {
           <NavigatorComponent />
         </Grid>
       </Grid>
+      {loading ? (
+        <Box display="flex" justifyContent="center">
+          <CircularProgress />
+        </Box>
+      ) : (
+        <Box>
+          <Typography>{moment().format("LLL")}</Typography>
+          <Grid container spacing={1}>
+            <Grid item sm={6} xs={12}>
+              <CountrySelector
+                countries={global}
+                handleOnChange={handleOnChange}
+                value={selectedCountryId}
+              />
+            </Grid>
+            <Grid item sm={6} xs={12}>
+              <Box display="flex" justifyContent="flex-end" alignItems="center">
+                <Typography component="span" variant="h6">
+                  Dân số:
+                </Typography>
+                <Typography
+                  component="span"
+                  variant="h5"
+                  style={{ marginLeft: 10, fontWeight: 600 }}
+                >
+                  {highlightData?.population.toLocaleString()}
+                </Typography>
+              </Box>
+            </Grid>
+          </Grid>
 
-      <Typography>{moment().format("LLL")}</Typography>
-      <Grid container spacing={1}>
-        <Grid item sm={6} xs={12}>
-          <CountrySelector
-            countries={global}
-            handleOnChange={handleOnChange}
-            value={selectedCountryId}
-          />
-        </Grid>
-        <Grid item sm={6} xs={12}>
-          <Box display="flex" justifyContent="flex-end" alignItems="center">
-            <Typography component="span" variant="h6">
-              Dân số:
-            </Typography>
-            <Typography
-              component="span"
-              variant="h5"
-              style={{ marginLeft: 10, fontWeight: 600 }}
-            >
-              {highlightData?.population.toLocaleString()}
-            </Typography>
-          </Box>
-        </Grid>
-      </Grid>
-
-      <Highlight data={highlightData} />
-      <Summary report={report} selectedCountryId={countryIdToChart} />
-      <Introduce />
-      <Symptom />
-      <Prevent />
-      <Footer />
+          <Highlight data={highlightData} />
+          <Summary report={report} selectedCountryId={countryIdToChart} />
+          <Introduce />
+          <Symptom />
+          <Prevent />
+          <Footer />
+        </Box>
+      )}
+      <ScrollToTop />
     </>
   );
 };

@@ -5,20 +5,20 @@ import {
   Typography,
   makeStyles,
 } from "@material-ui/core";
-import Prevent01 from "../../config/images/prevent01.png";
-import Prevent02 from "../../config/images/prevent02.png";
-import Prevent03 from "../../config/images/prevent03.png";
-import Prevent04 from "../../config/images/prevent04.png";
-import Prevent05 from "../../config/images/prevent05.png";
-import Prevent06 from "../../config/images/prevent06.png";
+import Symptom01 from "../../config/images/symp-a.png";
+import Symptom02 from "../../config/images/symp-b.png";
+import Symptom03 from "../../config/images/symp-c.png";
+import Symptom04 from "../../config/images/symp-d.png";
+import Symptom05 from "../../config/images/symp-e.png";
+import Symptom06 from "../../config/images/symp-f.png";
 
 const useStyles = makeStyles({
   title: {
     margin: "60px 0",
   },
   image: {
-    width: 90,
-    height: 90,
+    width: 160,
+    height: 140,
     marginBottom: 10,
   },
   issue: {
@@ -46,7 +46,7 @@ const useStyles = makeStyles({
   },
 });
 
-const Prevent: React.FC = () => {
+const Symptom: React.FC = () => {
   const styles = useStyles();
   return (
     <Box py={3} display="flex" flexDirection="column" alignItems="center">
@@ -56,49 +56,49 @@ const Prevent: React.FC = () => {
       <Grid container spacing={1}>
         <Grid item sm={4} xs={6} className={styles.gridArea}>
           <Box className={styles.gridItem}>
-            <img src={Prevent01} alt="" className={styles.image} />
+            <img src={Symptom01} alt="" className={styles.image} />
             <Typography variant="h6" color="primary">
-              Wear A Mask
+              Dry Cough
             </Typography>
           </Box>
         </Grid>
         <Grid item sm={4} xs={6} className={styles.gridArea}>
           <Box className={styles.gridItem}>
-            <img src={Prevent02} alt="" className={styles.image} />
+            <img src={Symptom02} alt="" className={styles.image} />
             <Typography variant="h6" color="primary">
-              Wash Your Hand
+              Sore Throat
             </Typography>
           </Box>
         </Grid>
         <Grid item sm={4} xs={6} className={styles.gridArea}>
           <Box className={styles.gridItem}>
-            <img src={Prevent03} alt="" className={styles.image} />
+            <img src={Symptom03} alt="" className={styles.image} />
             <Typography variant="h6" color="primary">
-              Consult Doctor
+              Cold
             </Typography>
           </Box>
         </Grid>
         <Grid item sm={4} xs={6} className={styles.gridArea}>
           <Box className={styles.gridItem}>
-            <img src={Prevent04} alt="" className={styles.image} />
+            <img src={Symptom04} alt="" className={styles.image} />
             <Typography variant="h6" color="primary">
-              Avoid Touch
+              Fever
             </Typography>
           </Box>
         </Grid>
         <Grid item sm={4} xs={6} className={styles.gridArea}>
           <Box className={styles.gridItem}>
-            <img src={Prevent05} alt="" className={styles.image} />
+            <img src={Symptom05} alt="" className={styles.image} />
             <Typography variant="h6" color="primary">
-              Avoid Contact
+              Headache
             </Typography>
           </Box>
         </Grid>
         <Grid item sm={4} xs={6} className={styles.gridArea}>
           <Box className={styles.gridItem}>
-            <img src={Prevent06} alt="" className={styles.image} />
+            <img src={Symptom06} alt="" className={styles.image} />
             <Typography variant="h6" color="primary">
-              Clean Everyday
+              Vomiting
             </Typography>
           </Box>
         </Grid>
@@ -107,4 +107,4 @@ const Prevent: React.FC = () => {
   );
 };
 
-export default Prevent;
+export default Symptom;
